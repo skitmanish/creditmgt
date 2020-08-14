@@ -33,7 +33,7 @@ def transfer(request):
         profile2.credits=profile2.credits+int(request.POST['amount'])
         record=Trecord()
 
-        record=Trecord(fname=request.POST['fname'],tname=request.POST['toname'],amount=request.POST['amount'])
+        record=Trecord(fname=request.POST['fname'],tname=request.POST['toname'],amount=request.POST['amount'],event_date=datetime.now())
         record.save()
         profile1.save()
         profile2.save()
