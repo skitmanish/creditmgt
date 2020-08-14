@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from proview.models import Proview
 from record.models import Trecord
-from django_pg_current_timestamp import CurrentTimestamp
+
 from datetime import datetime
 # Create your views here.
 def home(request):
@@ -15,7 +15,7 @@ def contact(request):
     return render(request,'details/contact.html')
 
 def record(request):
-    
+
     records=Trecord.objects.order_by('-pk')
     return render(request,'details/record.html',{'records':records})
 
@@ -33,7 +33,7 @@ def transfer(request):
         profile2.credits=profile2.credits+int(request.POST['amount'])
         record=Trecord()
 
-        record=Trecord(fname=request.POST['fname'],tname=request.POST['toname'],amount=request.POST['amount'],event_date=datetime.now())
+        record=Trecord(fname=request.POST['fname'],tname=request.POST['toname'],amount=request.POST['amount'])
         record.save()
         profile1.save()
         profile2.save()
