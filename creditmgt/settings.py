@@ -25,7 +25,7 @@ SECRET_KEY = '^+&g0^l*x0s6p8)g%cnv!c1+hz3i*m+)^ytttu$8qvj_%g^5&m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'creditmgt.urls'
@@ -87,6 +88,10 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+import dj_database_url
+db_from_env=dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
