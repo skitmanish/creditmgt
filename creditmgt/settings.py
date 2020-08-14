@@ -131,6 +131,14 @@ USE_TZ = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hffayo9ud',
+    'API_KEY': '373424419897114',
+    'API_SECRET': 'aiwxFJH5gDD0HN8fvYZ3rCqQVgY',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS=[os.path.join(BASE_DIR, 'creditmgt/static')]
