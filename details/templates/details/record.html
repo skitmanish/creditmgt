@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+
+
+    <div class="row mb-4">
+        <header class="col-xl-12"><h2 class="tm-text-shadow">Transfer Record</h2></header>
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>
+
+      <th scope="col">Transfer From </th>
+      <th scope="col">.</th>
+      <th scope="col">Transfer To</th>
+      <th scope="col">Credit Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for record in records.all %}
+    <tr>
+      
+      <td>{{record.fname}}</td>
+      <td>&#8594;</td>
+      <td>{{record.tname}}</td>
+      <td>{{record.amount}}</td>
+    </tr>
+        {%endfor%}
+  </tbody>
+</table>
+
+    </div>
+
+
+
+</div>	<!-- .tm-content -->
+
+{% endblock %}

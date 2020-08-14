@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+
+    <div>
+        <br>
+        <header class="mb-4"><h2 class="tm-text-shadow">View users</h2></header>
+        <div class="basic-4">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        
+                        {% for profile in profiles.all %}
+                        <div class="team-member">
+                            <div class="image-wrapper">
+                                <a href="{% url 'profile' profile.id %}"><img class="img-fluid" src="{{profile.image.url}}" alt="alternative"></a>
+                            </div> <!-- end of image-wrapper -->
+                            <p class="p-large"><strong>{{profile.name}}</strong></p>
+                            <p class="Email ">{{profile.email}}</p>
+                            <span class="social-icons">
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x facebook"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x twitter"></i>
+                                        <i class="fab fa-twitter fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                            </span> <!-- end of social-icons -->
+                        </div> <!-- end of team-member -->
+                        <!-- end of team member -->
+
+                        {%endfor%}
+
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+    </div>
+    </div>
+
+
+</div>	<!-- .tm-content -->
+
+{% endblock %}

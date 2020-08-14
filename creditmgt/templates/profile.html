@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+
+{% block content %}
+
+
+  <title>Profile</title>
+
+  <!-- Favicon -->
+ <!-- Google web font "Open Sans" -->
+
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
+
+
+
+  <style>
+  select {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+  }
+  input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  #bottom {
+               position:absolute;
+               bottom:0;
+               left:0;
+           }
+}
+  </style>
+
+
+
+  <!-- Home Section Start -->
+
+      <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 ">
+
+          <br><br><br>
+
+            <header class="col-xl-12"><h2 class="tm-text-shadow">User Profile</h2></header>
+                    <br><br>
+        <section class="home-section">
+
+          <div class="row mb-4">
+
+              <div class="col-sm-offset-2 col-md-4 col-sm-6 margin-left-setting">
+                  <div class="margin-top-5">
+
+                   <div class="table-responsive">
+                      <table class="table">
+                          <tr>
+                              <td>Name</td>
+                              <td>{{profile.name}}</td>
+                           </tr>
+                           <tr>
+                              <td>Contact</td>
+                              <td>{{profile.number}}</td>
+                          </tr>
+                          <tr>
+                              <td>Email</td>
+                              <td>{{profile.email}}</td>
+                           </tr>
+                           <tr>
+                               <td>Available Credits</td>
+                               <td>{{profile.credits}}</td>
+                            </tr>
+
+
+
+                      </table>
+                    </div>
+                   </div>
+
+                    </div>
+
+
+               <div class="col-md-3 col-sm-3">
+                  <div class="me-image">
+                    <img src="{{profile.image.url}}" alt="">
+                </div>
+              </div>
+
+               </div>
+
+      <!-- Home Section End -->
+ </section>
+
+
+<br><br>
+        <!-- Example single danger button -->
+
+
+<form method="POST" action="{% url 'transfer' %}">
+    {% csrf_token %}
+<div class="row">
+  <div class="form-group col-md-6">
+    <label name="toname" for="exampleFormControlSelect1">Transfer To</label>
+    <select  name="toname">
+
+      {% for other in others.all %}
+      <option>{{other.name}}</option>
+        {%endfor%}
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+      <label for="inputZip" name="amount">Transfer Credit Amount</label>
+      <input type="text"  name="amount">
+    </div>
+
+    <input type="hidden" name="fname" value={{profile.name}}>
+
+
+    </div>
+
+
+      <div class="text-center margin-top-50">
+           <input class="button button-style button-style-dark button-style-color-2 smoth-scroll"  id="myBtn" data-toggle="modal" data-target="#myModal" type="submit"  value="Transfer credits"/>
+
+        </div>
+        <div class="modal fade" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              {{message}}
+            </div>
+          </div>
+        </div>
+        </form>
+
+
+
+
+
+
+
+
+  <br/>
+
+
+</div>
+
+
+
+
+{% endblock %}
