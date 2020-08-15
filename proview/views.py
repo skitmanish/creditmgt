@@ -13,4 +13,4 @@ def profile(request,profile_id):
     others=Proview.objects.filter(id__in=ids)
     message=''
 
-    return render(request,'profile.html',{'profile':profile,'others':others,'message'message})
+    return render(request,'profile.html',{'profile':profile,'others':others,'message':message})
